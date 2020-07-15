@@ -1,29 +1,66 @@
 {
-  "atomCode": "demo",
+  "atomCode": "AcrossProjectDistribution",
   "execution": {
-    "packagePath": "demo-jar-with-dependencies.jar",
+    "packagePath": "AcrossProjectDistribution.jar",
     "language": "java",
     "minimumVersion": "1.8",
     "demands": [],
-    "target": "$bk_java_path -jar demo-jar-with-dependencies.jar"
+    "target": "java -jar AcrossProjectDistribution.jar"
   },
   "input": {
-    "desc": {
-      "label": "描述",
-      "default": "123",
-      "placeholder": "请输入描述信息",
+    "customized": {
+      "default": false,
+      "type": "enum-input",
+      "required": true,
+      "disabled": false,
+      "hidden": false,
+      "isSensitive": false,
+      "list": [
+        {
+          "label": "从本次已归档构件中获取",
+          "value": false
+        },
+        {
+          "label": "从自定义版本仓库中获取",
+          "value": true
+        }
+      ]
+    },
+    "path": {
+      "label": "待分发构件",
+      "default": "",
+      "placeholder": "已归档构件的相对路径",
       "type": "vuex-input",
-      "desc": "描述",
       "required": true,
       "disabled": false,
       "hidden": false,
       "isSensitive": false
-    }
-  },
-  "output": {
-    "testResult": {
-      "description": "升级是否成功",
-      "type": "string",
+    },
+    "targetProjectId": {
+      "label": "目标项目",
+      "default": "",
+      "placeholder": "请选择要分发的项目",
+      "type": "selector",
+      "required": true,
+      "disabled": false,
+      "hidden": false,
+      "isSensitive": false,
+      "optionsConf": {
+        "searchable": false,
+        "multiple": false,
+        "url": "/project/api/user/projects/",
+        "paramId": "project_code",
+        "paramName": "project_name"
+      }
+    },
+    "targetPath": {
+      "label": "目标版本自定义仓库路径",
+      "default": "",
+      "placeholder": "请填写目标版本仓库的相对路径",
+      "type": "vuex-input",
+      "required": false,
+      "disabled": false,
+      "hidden": false,
       "isSensitive": false
     }
   }

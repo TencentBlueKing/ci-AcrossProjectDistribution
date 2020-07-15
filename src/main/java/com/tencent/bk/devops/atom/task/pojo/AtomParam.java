@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 插件参数定义
+ *
  * @version 1.0
  */
 @Data
@@ -14,5 +15,8 @@ public class AtomParam extends AtomBaseParam {
     /**
      * 以下请求参数只是示例，具体可以删除修改成你要的参数
      */
-    private String desc; //描述信息
+    private String customized;
+    private String path;
+    private String targetProjectId;
+    private String targetPath;
 }
