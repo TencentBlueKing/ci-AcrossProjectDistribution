@@ -10,7 +10,10 @@ repositories {
 
 dependencies {
     implementation("com.tencent.devops.ci-plugins:java-plugin-sdk:1.1.3")
-    implementation("com.tencent.bk.repo:api-repository:1.0.0")
+    implementation("com.tencent.bk.repo:api-repository:1.0.0") {
+        exclude("io.swagger")
+        exclude("org.apache.commons")
+    }
 }
 
 tasks.shadowJar {
