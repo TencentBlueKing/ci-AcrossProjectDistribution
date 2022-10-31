@@ -8,6 +8,5 @@ class AtomParam : AtomBaseParam() {
     val metadata: String = ""
     val targetProjectId: String = ""
     val targetPath: String = ""
-    val customPath: Boolean = false
     val cancelDisplay: Boolean = false
 }

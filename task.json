@@ -63,12 +63,6 @@
       "hidden": false,
       "isSensitive": false
     },
-    "customPath": {
-      "text": "是否为自定义目标路径",
-      "type": "atom-checkbox",
-      "required": false,
-      "desc": "目标目录路径默认会增加父级目录/share/{projectId}, 开启此选项后不再增加父级目录，目标路径完全由用户自定义"
-    },
     "cancelDisplay": {
       "type": "atom-checkbox",
       "text": "构件列表取消显示",

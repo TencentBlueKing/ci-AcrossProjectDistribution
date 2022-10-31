@@ -26,9 +26,8 @@ class AcrossProjectDistributionAtom : TaskAtom<AtomParam> {
         val customized = param.customized
         var srcPath = param.path
         val destProjectId = param.targetProjectId
-        var destPath = param.targetPath
+        val destPath = PathUtils.normalizePath(param.targetPath)
         val cancelDisplay = param.cancelDisplay
-        val customPath = param.customPath
         val metadata = getMetadata(param.metadata)
 
         val repoName: String
@@ -38,11 +37,6 @@ class AcrossProjectDistributionAtom : TaskAtom<AtomParam> {
         } else {
             repoName = REPO_CUSTOM
             srcPath = PathUtils.normalizeFullPath(srcPath)
-        }
-        destPath = if (!customPath) {
-            PathUtils.normalizeFullPath("/share/$projectId/$destPath")
-        } else {
-            PathUtils.normalizePath(destPath)
         }
 
         val fileList = distributionApi.search(userId, projectId, repoName, srcPath, metadata)
