@@ -22,18 +22,55 @@ tasks.shadowJar {
     archiveVersion.set("")
 }
 
-tasks.register<Copy>("copyTaskJson") {
+tasks.register<Copy>("copyTaskZhJson") {
     from("task.json")
     into("$buildDir/libs")
 }
 
-tasks.register<Zip>("package") {
-    dependsOn(tasks.shadowJar)
-    dependsOn(tasks.named("copyTaskJson"))
+tasks.register<Copy>("copyTaskEnJson") {
+    from("task_en.json")
+    into("$buildDir/libs")
+    rename("task_en.json", "task.json")
+}
 
+tasks.register<Copy>("copyZhResource") {
+    from("docs/desc.md")
+    from("images/logo.png")
+    into("$buildDir/libs/file")
+    rename("desc.md", "README.md")
+}
+
+tasks.register<Copy>("copyEnResource") {
+    from("docs/desc_en.md")
+    from("images/logo.png")
+    into("$buildDir/libs/file")
+    rename("desc_en.md", "README.md")
+}
+
+tasks.register<Zip>("packageCN") {
+    dependsOn(tasks.clean)
+    dependsOn(tasks.shadowJar)
+    dependsOn(tasks.named("copyTaskZhJson"))
+    dependsOn(tasks.named("copyZhResource"))
     destinationDirectory.set(layout.buildDirectory.dir("out"))
     archiveFileName.set("AcrossProjectDistribution.zip")
     from(layout.buildDirectory.dir("libs"))
+}
+
+tasks.register<Zip>("packageEN") {
+    dependsOn(tasks.clean)
+    dependsOn(tasks.shadowJar)
+    dependsOn(tasks.named("copyTaskEnJson"))
+    dependsOn(tasks.named("copyEnResource"))
+
+    destinationDirectory.set(layout.buildDirectory.dir("out"))
+    archiveFileName.set("AcrossProjectDistribution_en.zip")
+    from(layout.buildDirectory.dir("libs"))
+}
+
+tasks.register("package") {
+    dependsOn(tasks.named("packageCN"))
+    dependsOn(tasks.named("packageEN"))
 }
 
 tasks.jar {
