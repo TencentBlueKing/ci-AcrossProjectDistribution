@@ -52,6 +52,7 @@ tasks.register<Zip>("packageCN") {
     dependsOn(tasks.shadowJar)
     dependsOn(tasks.named("copyTaskZhJson"))
     dependsOn(tasks.named("copyZhResource"))
+    into("AcrossProjectDistribution")
     destinationDirectory.set(layout.buildDirectory.dir("out"))
     archiveFileName.set("AcrossProjectDistribution.zip")
     from(layout.buildDirectory.dir("libs"))
@@ -62,7 +63,7 @@ tasks.register<Zip>("packageEN") {
     dependsOn(tasks.shadowJar)
     dependsOn(tasks.named("copyTaskEnJson"))
     dependsOn(tasks.named("copyEnResource"))
-
+    into("AcrossProjectDistribution")
     destinationDirectory.set(layout.buildDirectory.dir("out"))
     archiveFileName.set("AcrossProjectDistribution_en.zip")
     from(layout.buildDirectory.dir("libs"))
