@@ -71,7 +71,7 @@
     }
   },
   "releaseInfo": {
-    "projectId": "Demo",
+    "projectId": "demo",
     "name": "AcrossProjectDistribution",
     "language": "java",
     "logoUrl": "${{indexFile(\"logo.png\")}}",

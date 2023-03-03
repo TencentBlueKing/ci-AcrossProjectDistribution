@@ -71,7 +71,7 @@
     }
   },
   "releaseInfo": {
-    "projectId": "Demo",
+    "projectId": "demo",
     "name": "跨项目推送构件",
     "language": "java",
     "logoUrl": "${{indexFile(\"logo.png\")}}",
