@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.tencent.devops.ci-plugins:java-plugin-sdk:1.1.8")
+    implementation("com.tencent.devops.ci-plugins:java-plugin-sdk:1.1.9")
     implementation("com.tencent.bk.repo:api-repository:1.0.0") {
         exclude("io.swagger")
         exclude("org.apache.commons")
@@ -34,6 +34,11 @@ tasks.register<Copy>("copyTaskEnJson") {
     rename("task_en.json", "task.json")
 }
 
+tasks.register<Copy>("copyI18n") {
+    from("src/main/resources/i18n")
+    into("$buildDir/libs/i18n")
+}
+
 tasks.register<Copy>("copyZhResource") {
     from("docs/desc.md")
     from("images/logo.png")
@@ -53,6 +58,7 @@ tasks.register<Zip>("packageCN") {
     dependsOn(tasks.shadowJar)
     dependsOn(tasks.named("copyTaskZhJson"))
     dependsOn(tasks.named("copyZhResource"))
+    dependsOn(tasks.named("copyI18n"))
     into("AcrossProjectDistribution")
     destinationDirectory.set(layout.buildDirectory.dir("out"))
     archiveFileName.set("AcrossProjectDistribution.zip")
