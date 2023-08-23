@@ -21,7 +21,7 @@
           "value": false
         },
         {
-          "label": "从自定义版本仓库中获取",
+          "label": "从自定义仓库获取",
           "value": true
         }
       ]
@@ -54,9 +54,9 @@
       }
     },
     "targetPath": {
-      "label": "目标版本自定义仓库路径",
+      "label": "目标自定义仓库路径",
       "default": "",
-      "placeholder": "请填写目标版本仓库的相对路径",
+      "placeholder": "请填写目标自定义仓库路径",
       "type": "vuex-input",
       "required": false,
       "disabled": false,
@@ -91,7 +91,7 @@
       "frontendType": "NORMAL"
     },
     "versionInfo": {
-      "publisher": "Blueking",
+      "publisher": "BlueKing",
       "releaseType": "NEW",
       "version": "1.0.0",
       "versionContent": "init"
