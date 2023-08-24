@@ -1,10 +1,11 @@
 plugins {
     kotlin("jvm") version "1.6.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.spring.dependency-management") version "1.1.3"
 }
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     mavenCentral()
 }
 
@@ -14,7 +15,16 @@ dependencies {
         exclude("io.swagger")
         exclude("org.apache.commons")
     }
-    implementation("com.tencent.bk.repo:api-generic:1.0.0")
+    implementation("com.tencent.bk.repo:api-generic:1.0.0"){
+        exclude("io.swagger")
+        exclude("org.apache.commons")
+    }
+}
+
+dependencyManagement {
+    dependencies {
+        dependency("com.fasterxml.jackson:jackson-bom:2.12.3")
+    }
 }
 
 tasks.shadowJar {
